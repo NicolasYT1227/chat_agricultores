@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Agricultores</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <section class="container">
+
+        <section class="loginAg">
+            <h2>Login</h2>
+            <form class="loginAg__form">
+                <input type="text" class="loginAg__input" placeholder="Seu nome" id="username" required>
+                <button type="submit" class="loginAg__button">Entrar</button>
+            </form>
+        </section>
+
+        <section class="usersContent">
+            <section class="UserScreen">
+                <div class="left-section">
+                    <section class="chatAg__userScreen"> 
+                        <div class="agUserEn"></div>
+                    </section>
+
+                    <section class="chatAg__other">
+                        <div class="chatAg__userOther">
+                            <img class="img__other" src="" />
+                            <p class="name__other"></p>
+                        </div>
+                    </section>
+                    
+                    <section class="chatAg__my">
+                        <footer class="footer_ag">
+                            <div class="userMy">
+                                <img class="img__ag" src="https://static.vecteezy.com/system/resources/previews/000/551/599/original/user-icon-vector.jpg" />
+                                <p class="name__my"></p>
+                            </div>
+                        </footer>
+                    </section>
+                </div>
+            </section>
+            
+            <section class="chatAg">
+                <section class="chatAgMessage">
+                    <!--<div class="message-self"></div>-->
+
+                    <!--<div class="message-other">
+                        <span class="message--sender"></span>
+                    </div>-->
+                </section>
+                
+                <form class="chatAg__form">
+                    <input type="text" class="chatAg__input" placeholder="Digite uma mensagem" required>
+                    <button type="submit" class="chatAg__button">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+            </section>
+        </section>
+    </section>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

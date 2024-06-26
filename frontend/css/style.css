@@ -1,0 +1,252 @@
+/* Reset básico e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+    font-size: 16px;
+}
+
+body {
+    background: url("../images/background.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #f2f2f2;
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo da seção de login */
+.loginAg {
+    width: 100%;
+    max-width: 330px;
+    background-color: #212121;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.loginAg > h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.loginAg__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.loginAg__input {
+    border: none;
+    padding: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #121212;
+    color: #f2f2f2;
+    outline: none;
+    border-radius: 5px;
+}
+
+.loginAg__input:focus {
+    outline: 2px solid #f2f2f2;
+}
+
+.loginAg__button {
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background-color: #ddd;
+    cursor: pointer;
+    color: #121212;
+}
+
+.loginAg__button:hover {
+    background-color: #fff;
+}
+
+.usersContent {
+    display: none;
+    flex: 1;
+}
+
+/* Estilo da seção de chat */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 18vw;
+    background-color: #232323;
+}
+
+.chatAg__userScreen {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #232323;
+    flex: 1;
+}
+
+.chatAg__other {
+    width: 100%;
+    margin-top: auto;
+}
+
+.chatAg__userOther {
+    display: flex;
+    width: 100%;
+    padding: 18px;
+}
+
+.img__other {
+    width: 24px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.name__other {
+    font-size: 18px;
+}
+
+.chatAg__my {
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer_ag {
+    display: flex;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 18px;
+}
+
+.userMy {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    margin-left: 12.5px;
+}
+
+.img__ag {
+    width: 34px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.name__my {
+    font-size: 18px;
+}
+
+.chatAg {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #000;
+}
+
+.chatAgMessage {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.chatAg__form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+}
+
+.chatAg__input {
+    flex: 1;
+    border: none;
+    padding: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #121212;
+    color: #f2f2f2;
+    outline: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 5.5px;
+}
+
+.chatAg__input:focus {
+    outline: 2px solid #f2f2f2;
+}
+
+.chatAg__button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background-color: #ddd;
+    cursor: pointer;
+    color: #121212;
+}
+
+.chatAg__button:hover {
+    background-color: #fff;
+}
+
+.chatAgMessages {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px 30px 90px;
+}
+
+.message-self {
+    background-color: #DCF8C6; /* Cor de fundo das mensagens enviadas pelo usuário */
+    color: #121212;
+    border-radius: 10px 10px 0 10px;
+    align-self: flex-end;
+    padding: 10px 15px;
+    margin: 5px 0;
+    max-width: 60%;
+    word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-right: 2.5rem;
+}
+
+.message-other {
+    background-color: #FFFFFF; /* Cor de fundo das mensagens recebidas */
+    color: #121212;
+    border-radius: 10px 10px 10px 0;
+    align-self: flex-start;
+    padding: 10px 15px;
+    margin: 5px 0;
+    max-width: 60%;
+    word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-left: 2.5rem;
+}
+
+.message--sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
