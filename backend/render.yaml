@@ -1,0 +1,9 @@
+# Exported from Render on 2024-06-26T22:06:48Z
+services:
+- type: web
+  name: chat_online_node-1
+  runtime: static
+  repo: https://github.com/NicolasYT1227/chat_online_node
+  staticPublishPath: .
+  rootDir: frontend
+version: "1"
