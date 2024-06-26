@@ -8,6 +8,41 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
+
+    <!--Seção sobre o site-->
+    <section class="engloba_tudo_nav">
+        <section class="container-sobre">
+            <section class="nav__barSite">
+                <nav class="navbar">
+                    <ul class="navigation">
+                        <li class="navInputs"><a href="#">Home</a></li>
+                        <li class="navInputs"><a href="#">Contato</a></li>
+                        <li class="navInputs"><button class="navInputs" id="btnLogin">Login</button></li>
+                    </ul>
+                </nav>
+            </section>
+        </section>
+        
+        <section class="slider">
+            <div class="slider-content">
+                <img src="./img/img-Ag2.avif" class="img-slider active" id="i1" />
+                <img src="./img/img-Ag3.jpg" class="img-slider" id="i2" />
+                <img src="./img/img-Ag6.jpg" class="img-slider" id="i5" />
+            </div>
+        </section>
+    </section>
+
+    <!--<section class="information">
+        <div class="content-information">
+            <p>Site desenvolvido com o propósito de conectar agricultores!</p>
+            <p>Conectando pequenos e grandes produtores, compartilhamento de informações</p>
+            <div class="red-p">
+                <p>Para se conectar <button id="btnRedPage">Clique aqui</button></p>
+            </div>
+        </div>
+    </section>-->
+
+    <!--Seção do chat-->
     <section class="container">
 
         <section class="loginAg">
@@ -15,6 +50,7 @@
             <form class="loginAg__form">
                 <input type="text" class="loginAg__input" placeholder="Seu nome" id="username" required>
                 <button type="submit" class="loginAg__button">Entrar</button>
+                <button class="returnPageI">Voltar</button>
             </form>
         </section>
 
@@ -22,7 +58,10 @@
             <section class="UserScreen">
                 <div class="left-section">
                     <section class="chatAg__userScreen"> 
-                        <div class="agUserEn"></div>
+                        <div class="exitChat">
+                            <img src="./img/log-out.png">
+                            <button class="btnLogoutUser">Exit</button>
+                        </div>
                     </section>
 
                     <section class="chatAg__other">
@@ -44,6 +83,12 @@
             </section>
             
             <section class="chatAg">
+                <section class="userCell">
+                    <div class="userCellS">
+                        <button class="btnMenuUserOCell">☰</button>
+                    </div>
+                </section>
+
                 <section class="chatAgMessage">
                     <!--<div class="message-self"></div>-->
 
@@ -63,5 +108,7 @@
     </section>
 
     <script src="./js/main.js"></script>
+    <script src="./js/slider.js"></script>
+    <script src="./js/centralizaText.js"></script>
 </body>
 </html>

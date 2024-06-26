@@ -11,15 +11,165 @@
 }
 
 body {
-    background: url("../images/background.png") no-repeat center center fixed;
-    background-size: cover;
+    background-color: #212121;
     color: #f2f2f2;
+}
+
+.container-sobre {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: inline;
+}
+
+.nav__barSite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navInputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 0 8.5px;
+    text-align: center;
+    color: #fff;
+    margin-top: 5.5dvh;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 5.5dvh;
+}
+
+.navInputs:hover {
+    transform: translateY(-2px);
+    color: #fff;
+    font-weight: 800;
+}
+
+.navInputs > a {
+    text-decoration: none;
+    color: #fff;
+    outline: none;
+}
+
+.navInputs > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    list-style: none;
+    border: none;
+    border-radius: 5.5px;
+    background-color: #121212;
+    text-transform: uppercase;
+}
+
+/* Centraliza o slider */
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 10dvh; /* ou qualquer altura desejada */
+}
+
+/* Configura o conteúdo do slider */
+.slider-content {
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: auto;
+}
+
+/* Configura as imagens para que fiquem empilhadas */
+.img-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Exibe a imagem ativa */
+.img-slider.active {
+    opacity: 1;
+    width: 100%;
+}
+
+/* Estilo dos botões */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+button.prev {
+    left: 14.5rem;
+    margin-top: 20dvh;
+    font-size: 24px;
+}
+
+button.next {
+    right: 14.5rem;
+    margin-top: 20dvh;
+    font-size: 24px;
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48dvh;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-bottom: 2.5px;
+    border-radius: 5.5px;
+    font-size: 16px;
+}
+
+.content-information {
+    display: block;
+}
+
+.red-p {
+    display: flex;
+}
+
+#btnRedPage {
+    padding: 5px;
+    background-color: #3c4cc6;
+    border: none;
+    border-radius: 5.5px;
+    cursor: pointer;
 }
 
 /* Container principal */
 .container {
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,6 +182,8 @@ body {
     background-color: #212121;
     border-radius: 5px;
     padding: 20px;
+    display: none;
+    flex-direction: column;
 }
 
 .loginAg > h2 {
@@ -77,6 +229,17 @@ body {
     background-color: #fff;
 }
 
+.returnPageI {
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background-color: #cac6c6;
+    cursor: pointer;
+    color: #1e1e1e;
+}
+
 .usersContent {
     display: none;
     flex: 1;
@@ -86,8 +249,8 @@ body {
 .left-section {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 18vw;
+    height: 100dvh;
+    width: 18dvw;
     background-color: #232323;
 }
 
@@ -107,6 +270,9 @@ body {
     display: flex;
     width: 100%;
     padding: 18px;
+    flex-direction: column;
+    margin-bottom: 0.5dvh;
+    margin-left: 0.35rem;
 }
 
 .img__other {
@@ -116,7 +282,9 @@ body {
 }
 
 .name__other {
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: 0.5dvh;
+    padding: 0.5dvh;
 }
 
 .chatAg__my {
@@ -129,6 +297,7 @@ body {
     width: 100%;
     background-color: #1e1e1e;
     padding: 18px;
+    color: #f2f2f2;
 }
 
 .userMy {
@@ -249,4 +418,582 @@ body {
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
+}
+
+.exitChat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8f3131;
+    padding: 2.5px 0;
+    cursor: pointer;
+}
+
+.exitChat > img {
+    width: 28%;
+    padding: 5px;
+}
+
+.exitChat > button {
+    font-size: 18px;
+    outline: none;
+    text-decoration: none;
+    border: none;
+}
+
+.btnMenuUserOCell {
+    display: block;
+    position: fixed;
+    width: 4.5dvh;
+    height: 4.5dvh;
+    padding: 1px 0;
+    margin-top: 6.5dvh;
+    margin-left: 1rem;
+    border: none;
+    display: none;
+}
+
+.btnMenuUserOCell > img {
+    background-color: #494949;
+}
+
+@media (min-width: 960px){
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+    }
+    
+    :root {
+        font-size: 16px;
+    }
+    
+    body {
+        background-color: #212121;
+        color: #f2f2f2;
+    }
+    
+    .container-sobre {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: inline;
+    }
+    
+    .nav__barSite {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navInputs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: 0 8.5px;
+        text-align: center;
+        color: #fff;
+        margin-top: 5.5dvh;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 5.5dvh;
+    }
+    
+    .navInputs:hover {
+        transform: translateY(-2px);
+        color: #fff;
+        font-weight: 800;
+    }
+    
+    .navInputs > a {
+        text-decoration: none;
+        color: #fff;
+        outline: none;
+    }
+    
+    .navInputs > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        list-style: none;
+        border: none;
+        border-radius: 5.5px;
+        background-color: #121212;
+        text-transform: uppercase;
+    }
+    
+    /* Centraliza o slider */
+    .slider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 10dvh; /* ou qualquer altura desejada */
+    }
+
+    .slider-conteudo-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Configura o conteúdo do slider */
+    .slider-content {
+        display: flex;
+        position: relative;
+        width: 50%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Configura as imagens para que fiquem empilhadas */
+    .img-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    /* Exibe a imagem ativa */
+    .img-slider.active {
+        opacity: 1;
+        width: 100%;
+    }
+    
+    /* Estilo dos botões */
+    button.prev, button.next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+    
+    button.prev {
+        left: 14.5rem;
+        margin-top: 20dvh;
+        font-size: 24px;
+    }
+    
+    button.next {
+        right: 14.5rem;
+        margin-top: 20dvh;
+        font-size: 24px;
+    }
+    
+    button.prev:hover, button.next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+    
+    .information {
+        display: flex;
+        flex-direction: column;
+        margin-top: 48dvh;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        margin-bottom: 2.5px;
+        border-radius: 5.5px;
+        font-size: 16px;
+    }
+    
+    .content-information {
+        display: block;
+    }
+    
+    .red-p {
+        display: flex;
+    }
+    
+    #btnRedPage {
+        padding: 5px;
+        background-color: #3c4cc6;
+        border: none;
+        border-radius: 5.5px;
+        cursor: pointer;
+    }
+    
+    /* Container principal */
+    .container {
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Estilo da seção de login */
+    .loginAg {
+        width: 100%;
+        max-width: 330px;
+        background-color: #212121;
+        border-radius: 5px;
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+    }
+    
+    .loginAg > h2 {
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .loginAg__form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .loginAg__input {
+        border: none;
+        padding: 15px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background-color: #121212;
+        color: #f2f2f2;
+        outline: none;
+        border-radius: 5px;
+    }
+    
+    .loginAg__input:focus {
+        outline: 2px solid #f2f2f2;
+    }
+    
+    .loginAg__button {
+        border: none;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        background-color: #ddd;
+        cursor: pointer;
+        color: #121212;
+    }
+    
+    .loginAg__button:hover {
+        background-color: #fff;
+    }
+    
+    .returnPageI {
+        border: none;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        background-color: #cac6c6;
+        cursor: pointer;
+        color: #1e1e1e;
+    }
+    
+    .usersContent {
+        display: none;
+        flex: 1;
+    }
+    
+    /* Estilo da seção de chat */
+    .left-section {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        width: 18dvw;
+        background-color: #232323;
+    }
+    
+    .chatAg__userScreen {
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #232323;
+        flex: 1;
+    }
+    
+    .chatAg__other {
+        width: 100%;
+        margin-top: auto;
+    }
+    
+    .chatAg__userOther {
+        display: flex;
+        width: 100%;
+        padding: 18px;
+        flex-direction: column;
+        margin-bottom: 0.5dvh;
+        margin-left: 0.35rem;
+    }
+    
+    .img__other {
+        width: 24px;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    .name__other {
+        font-size: 20px;
+        margin-bottom: 0.5dvh;
+        padding: 0.5dvh;
+    }
+    
+    .chatAg__my {
+        width: 100%;
+        margin-top: auto;
+    }
+    
+    .footer_ag {
+        display: flex;
+        width: 100%;
+        background-color: #1e1e1e;
+        padding: 18px;
+        color: #f2f2f2;
+    }
+    
+    .userMy {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        margin: 0 auto;
+        color: #fff;
+        margin-left: 12.5px;
+    }
+    
+    .img__ag {
+        width: 34px;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    .name__my {
+        font-size: 18px;
+    }
+    
+    .chatAg {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #000;
+    }
+    
+    .chatAgMessage {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+    
+    .chatAg__form {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding: 10px;
+        background-color: #1a1a1a;
+        border-top: 1px solid #333;
+    }
+    
+    .chatAg__input {
+        flex: 1;
+        border: none;
+        padding: 15px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background-color: #121212;
+        color: #f2f2f2;
+        outline: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-left: 5.5px;
+    }
+    
+    .chatAg__input:focus {
+        outline: 2px solid #f2f2f2;
+    }
+    
+    .chatAg__button {
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        background-color: #ddd;
+        cursor: pointer;
+        color: #121212;
+    }
+    
+    .chatAg__button:hover {
+        background-color: #fff;
+    }
+    
+    .chatAgMessages {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 30px 30px 90px;
+    }
+    
+    .message-self {
+        background-color: #DCF8C6; /* Cor de fundo das mensagens enviadas pelo usuário */
+        color: #121212;
+        border-radius: 10px 10px 0 10px;
+        align-self: flex-end;
+        padding: 10px 15px;
+        margin: 5px 0;
+        max-width: 60%;
+        word-wrap: break-word;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        margin-right: 2.5rem;
+    }
+    
+    .message-other {
+        background-color: #FFFFFF; /* Cor de fundo das mensagens recebidas */
+        color: #121212;
+        border-radius: 10px 10px 10px 0;
+        align-self: flex-start;
+        padding: 10px 15px;
+        margin: 5px 0;
+        max-width: 60%;
+        word-wrap: break-word;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        margin-left: 2.5rem;
+    }
+    
+    .message--sender {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    .exitChat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8f3131;
+        padding: 2.5px 0;
+        cursor: pointer;
+    }
+    
+    .exitChat > img {
+        width: 28%;
+        padding: 5px;
+    }
+    
+    .exitChat > button {
+        font-size: 18px;
+        outline: none;
+        text-decoration: none;
+        border: none;
+    }
+    
+    .btnMenuUserOCell {
+        display: block;
+        position: fixed;
+        width: 4.5dvh;
+        height: 4.5dvh;
+        padding: 1px 0;
+        margin-top: 6.5dvh;
+        margin-left: 1rem;
+        border: none;
+        display: none;
+    }
+    
+    .btnMenuUserOCell > img {
+        background-color: #494949;
+    }
+}
+
+@media (max-width: 960px){
+    .left-section {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0; /* Inicialmente com largura 0 */
+        height: 100%;
+        background-color: #f8f9fa; /* Cor de fundo */
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        z-index: 1000;
+        overflow: hidden;
+        transition: width 0.75s ease; /* Transição suave para a largura */
+    }
+
+    .chatAg__my {
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .userMy {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 5dvh;
+    }
+
+    .img__ag {
+        width: 40px;
+    }
+
+    .name__my {
+        font-size: 22px;
+    }
+
+    .btnMenuUserOCell {
+        display: block;
+        position: absolute;
+        width: 6dvh;
+        height: 6dvh;
+        padding: 5.5px;
+        margin-top: 6.5dvh;
+        margin-left: 1rem;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #212121;
+        font-size: 20px;
+        top: 10px;
+        left: 10px;
+        z-index: 1100;
+        cursor: pointer;
+    }
+
+    .btnMenuUserOCell.open {
+        content: '✕'; /* Ícone de X */
+    }
+
+    .chatAg__userOther {
+        display: none;
+        position: relative;
+        margin-top: 10dvh;
+    }
+
+    .show {
+        display: block;
+    }
+
 }

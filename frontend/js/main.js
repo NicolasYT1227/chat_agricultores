@@ -7,7 +7,9 @@ const chatInput = chat.querySelector(".chatAg__input");
 const chatMessages = document.querySelector(".chatAgMessage"); // Corrigido
 const usersListElement = document.querySelector(".chatAg__userOther"); // Corrigido
 
-let websocket;
+const BACK_URL = "ws://localhost:8080"
+
+const websocket = new WebSocket(BACK_URL);
 
 const colors = [
     "cadetblue",
@@ -22,7 +24,6 @@ const imgUsers = [
     "https://static.vecteezy.com/system/resources/previews/000/551/599/original/user-icon-vector.jpg",
     "https://tse2.mm.bing.net/th?id=OIP.fqSvfYQB0rQ-6EG_oqvonQHaHa&pid=Api&P=0&h=180",
     "https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg",
-    "https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png"
 ];
 
 function getRandomImageUrl() {
@@ -31,17 +32,14 @@ function getRandomImageUrl() {
 }
 
 function userMy(userNameInput) {
-    const userNameMyAg = document.querySelector(".name__my");
-    if (userNameMyAg) {
-        userNameMyAg.textContent = userNameInput;
+    if (myUsername) {
+        myUsername.textContent = userNameInput;
     }
 }
 
 function userOther(userNameInput) {
     const userNameAg = document.querySelector(".name__other");
-    if (userNameAg) {
-        userNameAg.textContent = userNameInput;
-    }
+    userNameAg.innerHTML = userNameInput;
 }
 
 const user = { name: "", id: "", color: "" };
@@ -106,7 +104,6 @@ const updateUsersList = (clients) => {
 
         if (clients.length > 1) {
             clients.forEach(client => {
-                // Verifica se o cliente é diferente de você
                 if (client.id !== user.id) {
                     const div = document.createElement('div');
                     const img = document.createElement('img');
@@ -114,11 +111,11 @@ const updateUsersList = (clients) => {
                     img.alt = 'User Image';
                     img.classList.add('img__other');
 
-                    div.textContent = client.username || `User ${client.id}`; // Corrigido
+                    div.textContent = client.userName || client.id;
                     div.style.color = client.color;
                     div.classList.add('name__other');
 
-                    div.insertBefore(img, div.firstChild); // Adiciona a imagem antes do texto
+                    div.insertBefore(img, div.firstChild);
 
                     usersListElement.appendChild(div);
                 }
@@ -127,64 +124,144 @@ const updateUsersList = (clients) => {
     }
 };
 
+const campoNav = document.querySelector(".engloba_tudo_nav");
+const campoLogin = document.querySelector(".loginAg");
+const campoInforme = document.querySelector(".information");
+const campoChat = document.querySelector(".chatAg");
+const campoUserLeft = document.querySelector(".left-section");
+
+function funcaoDeExibicaoSobSite(event){
+    const btnLogin = document.getElementById("btnLogin");
+
+    btnLogin.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        campoNav.style.display = 'none';
+        //campoInforme.style.display = 'none';
+        campoLogin.style.display = 'flex';
+    });
+}
+
+function btnLoginHerePage(event){
+    const btnLogHere = document.getElementById("btnRedPage");
+
+    btnLogHere.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        campoNav.style.display = 'none';
+        campoInforme.style.display = 'none';
+        campoLogin.style.display = 'flex';
+
+    });
+}
+
 function loginAg() {
     document.querySelector('.loginAg__form').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        // Get the username
-        const userNameInput = document.querySelector('.loginAg__input').value;
+        const userNameInput = document.querySelector('.loginAg__input').value.trim();
 
-        // Check if the username is valid
-        if (!userNameInput) {
-            alert("Please enter a valid username.");
-            return;
+        user.name = userNameInput;
+        
+        if(userNameInput === user.name){
+            userMy(userNameInput)
+        } else {
+            userOther(userNameInput)
         }
 
-        // Set the username to the user object
-        user.name = userNameInput;
-
-        // Add the username to the correct section
-        userMy(userNameInput);
-
-        // Hide the login section
         document.querySelector('.loginAg').style.display = 'none';
-
-        // Show the chat and user screen sections
         document.querySelector(".usersContent").style.display = "flex";
         document.querySelector('.UserScreen').style.display = 'flex';
         document.querySelector('.chatAg').style.display = 'flex';
 
-        // Select a random image
         const userImageElement = document.querySelector('.img__other');
         if (userImageElement) {
             userImageElement.src = getRandomImageUrl();
-            userImageElement.style.display = "block"; // Display image if username exists
+            userImageElement.style.display = "block";
         }
 
-        // Set user id and color
         user.id = crypto.randomUUID();
         user.color = getRandomColor();
 
-        // Initialize WebSocket connection
-        websocket = new WebSocket("ws://localhost:8080");
+        const message = { type: "addUser", user: user }
+        websocket.send(JSON.stringify(message))
         websocket.onmessage = processMessage;
 
         chatForm.addEventListener("submit", sendMessage);
     });
 }
 
+function sendWebsocket(requestData) {
+    if (websocket.readyState !== websocket.OPEN) {
+        websocket = new websocket(BACK_URL)
+    }
+}
+
 function sendMessage(event) {
     event.preventDefault();
 
-    const message = {
-        userId: user.id,
-        userName: user.name,
-        userColor: user.color,
-        content: chatInput.value
+    if (!websocket || websocket.readyState !== WebSocket.OPEN) {
+        alert("O WebSocket não está aberto, tente novamente.");
+        websocket = new websocket(BACK_URL)
+        return;
+    }
+
+    const requestData = {
+        type: 'sendMessage',
+        message: {
+            userId: user.id,
+            userName: user.name,
+            userColor: user.color,
+            content: chatInput.value.trim()
+        }
     };
 
-    websocket.send(JSON.stringify(message));
-    chatInput.value = "";
+    if (requestData.message.content) {
+        websocket.send(JSON.stringify(requestData));
+        chatInput.value = "";
+    }
 }
 
+
+function logoutPage(){
+    const btnLogout = document.querySelector(".exitChat");
+
+    btnLogout.addEventListener("click", (e) => {
+        e.preventDefault();
+        if(BACK_URL && BACK_URL.readyState === WebSocket.OPEN){
+            BACK_URL.close();
+        }
+
+        campoNav.style.display = 'flex';
+        campoLogin.style.display = 'none';
+        campoUserLeft.style.display = 'none';
+        campoChat.style.display = 'none';
+    })
+}
+
+function enviaEventoClickServer(event){
+    websocket.onmessage = (event) => {
+        const message = JSON.parse(event.data)
+        console.log("Recibo do servidor")
+
+        if(message.type === 'disconnect' && message.status === 'sucess'){
+            console.log('Sucesso na disconexão do usuário')
+        }
+    }
+
+    websocket.onclose = () => {
+        console.log('Desconectado do servidor')
+    }
+}
+
+const btnLogoutUserServer = document.querySelector(".exitChat");
+
 btnLoginAg.addEventListener("click", loginAg);
+btnLogoutUserServer.addEventListener('click', (clients) => {
+    enviaEventoClickServer();
+    websocket.send(JSON.stringify({ type: 'disconnect' }));
+    updateUsersList(clients);
+})
+funcaoDeExibicaoSobSite()
+//btnLoginHerePage();
+logoutPage();

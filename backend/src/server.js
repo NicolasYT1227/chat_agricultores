@@ -8,37 +8,39 @@ const wss = new WebSocketServer({ port: 8080 });
 
 const clients = new Map();
 
-wss.on("connection", (ws) => {
-    const userId = crypto.randomUUID();
-    clients.set(ws, { id: userId });
+function addUser(user, ws) {
+    console.log(user)
+    clients.set(ws, { id: user.id, userName: user.name });
+}
 
-    ws.on("error", console.error);
+function addMessage(messageData, ws) {
+    const clientInfo = clients.get(ws);
+    clientInfo.userName = messageData.userName;
+    clientInfo.userColor = messageData.userColor;
 
-    ws.on("message", (data) => {
-        const messageData = JSON.parse(data);
-        const clientInfo = clients.get(ws);
-
-        // Atualiza as informações do cliente
-        clientInfo.name = messageData.userName;
-        clientInfo.color = messageData.userColor;
-
-        // Envia a mensagem para todos os clientes
-        wss.clients.forEach((client) => {
-            if (client.readyState === ws.OPEN) {
-                client.send(JSON.stringify({
-                    userId: clientInfo.id, // Corrige para enviar o id correto do cliente
-                    userName: messageData.userName,
-                    userColor: messageData.userColor,
-                    content: messageData.content
-                }));
-            }
-        });
+    // Envia a mensagem para todos os clientes
+    wss.clients.forEach((client) => {
+        if (client.readyState === ws.OPEN) {
+            client.send(JSON.stringify({
+                userId: clientInfo.id,
+                userName: clientInfo.userName,
+                userColor: clientInfo.userColor,
+                content: messageData.content
+            }));
+        }
     });
+}
 
-    ws.on("close", () => {
-        clients.delete(ws);
-        updateClientsList();
-    });
+function handleDisconnectUser(ws){
+    console.log("Usuário disconectado")
+
+    ws.send(JSON.stringify({ type: 'disconnect', status: 'sucess' }));
+
+    ws.close();
+}
+
+wss.on("connection", (ws, req) => {
+    const { url } = req;
 
     const updateClientsList = () => {
         const clientsList = Array.from(clients.values());
@@ -50,8 +52,45 @@ wss.on("connection", (ws) => {
         });
     };
 
+    ws.on("error", console.error);
+
+    ws.on("message", (data) => {
+
+        const dataObj = JSON.parse(data)
+
+        const { type } = dataObj
+
+        switch (type) {
+            case 'addUser':
+                addUser(dataObj.user, ws);
+                updateClientsList()
+                break
+            case 'sendMessage':
+                addMessage(dataObj.message, ws);
+                break
+            case 'logout':
+                
+        }
+    });
+
+    ws.on('message', (message) => {
+        console.log("Mensagem recebida")
+        const eventParsedUser = JSON.parse(message)
+
+        if(eventParsedUser.type === 'disconnect'){
+            handleDisconnectUser(ws);
+        }
+    });
+
+    ws.on("close", () => {
+        clients.delete(ws);
+        updateClientsList();
+    });
+
     // Atualiza a lista de clientes quando um novo cliente se conecta
     updateClientsList();
 
     console.log("Client connected");
 });
+
+console.log("O servidor foi iniciado")
