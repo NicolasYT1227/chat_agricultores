@@ -7,7 +7,7 @@ const chatInput = chat.querySelector(".chatAg__input");
 const chatMessages = document.querySelector(".chatAgMessage"); // Corrigido
 const usersListElement = document.querySelector(".chatAg__userOther"); // Corrigido
 
-const BACK_URL = "ws://https://nicolasyt1227.github.io/chat_agricultores/frontend/index.html"
+const BACK_URL = "ws://https://nicolasyt1227.github.io/chat_agricultores/frontend/index.html:8080"
 
 const websocket = new WebSocket(BACK_URL);
 
