@@ -7,7 +7,7 @@ const chatInput = chat.querySelector(".chatAg__input");
 const chatMessages = document.querySelector(".chatAgMessage"); // Corrigido
 const usersListElement = document.querySelector(".chatAg__userOther"); // Corrigido
 
-const BACK_URL = "ws://localhost:8080"
+const BACK_URL = "wss://agrinho-2024.onrender.com"
 
 const websocket = new WebSocket(BACK_URL);
 
