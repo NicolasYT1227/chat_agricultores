@@ -79,7 +79,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 10dvh; /* ou qualquer altura desejada */
 }
@@ -906,6 +906,8 @@ button.prev:hover, button.next:hover {
         outline: none;
         text-decoration: none;
         border: none;
+        background-color: #8f3131;
+        color: #f2f2f2;
     }
     
     .btnMenuUserOCell {
@@ -994,6 +996,30 @@ button.prev:hover, button.next:hover {
 
     .show {
         display: block;
+    }
+
+    .left-section {
+        background-color: #121212;
+        color: #f2f2f2;
+    }
+
+    .img__other {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .name__other {
+        display: flex;
+        padding: 2.5px;
+    }
+
+    .exitChat > button {
+        background-color: #8f3131;
+        color: #f2f2f2;
+    }
+
+    .btnMenuUserOCell {
+        color: #f2f2f2;
     }
 
 }

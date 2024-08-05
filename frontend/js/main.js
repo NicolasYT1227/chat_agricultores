@@ -7,7 +7,7 @@ const chatInput = chat.querySelector(".chatAg__input");
 const chatMessages = document.querySelector(".chatAgMessage"); // Corrigido
 const usersListElement = document.querySelector(".chatAg__userOther"); // Corrigido
 
-const BACK_URL = "ws://https://nicolasyt1227.github.io/chat_agricultores/frontend/index.html:8080"
+const BACK_URL = "ws://localhost:8080"
 
 const websocket = new WebSocket(BACK_URL);
 
@@ -129,6 +129,7 @@ const campoLogin = document.querySelector(".loginAg");
 const campoInforme = document.querySelector(".information");
 const campoChat = document.querySelector(".chatAg");
 const campoUserLeft = document.querySelector(".left-section");
+const sliderView = document.querySelector(".slider");
 
 function funcaoDeExibicaoSobSite(event){
     const btnLogin = document.getElementById("btnLogin");
@@ -137,6 +138,7 @@ function funcaoDeExibicaoSobSite(event){
         e.preventDefault();
 
         campoNav.style.display = 'none';
+        sliderView.style.display = 'none';
         //campoInforme.style.display = 'none';
         campoLogin.style.display = 'flex';
     });
@@ -236,6 +238,8 @@ function logoutPage(){
         campoLogin.style.display = 'none';
         campoUserLeft.style.display = 'none';
         campoChat.style.display = 'none';
+        sliderView.style.display = 'flex';
+        sliderView.classList.add("slider");
     })
 }
 
@@ -261,6 +265,16 @@ btnLogoutUserServer.addEventListener('click', (clients) => {
     enviaEventoClickServer();
     websocket.send(JSON.stringify({ type: 'disconnect' }));
     updateUsersList(clients);
+
+    // Clear cache
+    if ('caches' in window) {
+        caches.keys().then(function(names) {
+            for (let name of names)
+                caches.delete(name);
+        });
+    }
+    
+    location.reload(true);
 })
 funcaoDeExibicaoSobSite()
 //btnLoginHerePage();

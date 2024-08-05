@@ -9,6 +9,8 @@ const campoInformeS = document.querySelector(".information");
 const btnReturnPageI = document.querySelector(".returnPageI");
 const sliderI = document.querySelector('.slider');
 
+
+
 function showImage(index) {
     images.forEach((img, i) => {
         if (i === index) {
@@ -28,11 +30,16 @@ function btnReturnI() {
         CampoNavS.style.display = 'flex';
         campoNav.classList.add('navigation');
 
+        sliderI.style.position = 'relative';
+        sliderI.style.top = '50%';
+        sliderI.style.left = '50%';
+        sliderI.style.transform = 'translate(-50%, -50%)';
+
         currentIndex = 0;
         showImage(currentIndex);
 
         sliderI.style.display = 'flex';
-        sliderI.classList.add('slider-content');
+        sliderI.classList.add('slider');
 
     });
 }

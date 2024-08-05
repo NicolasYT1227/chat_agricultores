@@ -7,7 +7,7 @@ const chatInputMenu = chatMenu.querySelector(".chatAg__form");
 
 let menuEstaAberto = 0;
 
-function toggleMenu() {
+function toggleMenuMobile() {
     if (menuEstaAberto === 0) {
         leftSectionUser.classList.add('show');
         userOtherCell.classList.add('show');
@@ -27,5 +27,5 @@ function toggleMenu() {
 
 btnMenuCell.addEventListener("click", (event) => {
     event.preventDefault();
-    toggleMenu();
+    toggleMenuMobile();
 });
