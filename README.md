@@ -7,6 +7,7 @@ Após intalar o node, abra a pasta com os arquivos da aplicação/site.
 No terminal do próprio VS Code, digite os seguintes comandos:
 
 Para instalar as instâncias: npm install.
+
 Para rodar a aplicação web: npm start.
 
 Para visualizar a parte visual da página abra com a extensão Live Server.
