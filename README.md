@@ -10,7 +10,7 @@ Para instalar as instâncias: npm install.
 
 Para rodar a aplicação web: npm start.
 
-Para visualizar a parte visual da página abra com a extensão Live Server.
+Para visualizar a parte visual da página abra-o com a extensão Live Server.
 
 Espero que gostem!
 
