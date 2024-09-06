@@ -3,8 +3,11 @@ O site tem o intuito de introduzir diversos tipos de agricultores em contato ent
 Para rodar o site/aplicação web precisamos ter o node instalado. Se não possuí-lo basta clicar no link abaixo:
 https://nodejs.org/en/download/prebuilt-installer/current
 
-Após intalar o node, abra a pasta com os arquivos da aplicação/site.
+Após instalar o node, abra a pasta com os arquivos da aplicação/site.
 No terminal do próprio VS Code, digite os seguintes comandos:
+
+Para acessar a pasta do backend pelo terminal:
+cd backend
 
 Para instalar as instâncias: npm install.
 
